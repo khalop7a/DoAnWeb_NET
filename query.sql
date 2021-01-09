@@ -2,6 +2,16 @@
 go
 use QL_NhaTro
 go
+create table Admin
+(
+id varchar(50) primary key,
+MatKhau varchar(32) not null,
+SDT varchar(11) not null,
+Email varchar(320) not null,
+)
+go
+insert into Admin values('Admin', '123', 0987654321, 'huynhhuetruc@gmail.com')
+go
 create table NguoiDung
 (
 NguoiDung_ID nvarchar(100) primary key,
