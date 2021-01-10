@@ -1,0 +1,11 @@
+D:\ASP .Net\DoAnWeb_NET-master\Project_Web_NET\ModelsMVC\bin\Debug\ModelsMVC.dll.config
+D:\ASP .Net\DoAnWeb_NET-master\Project_Web_NET\ModelsMVC\bin\Debug\ModelsMVC.dll
+D:\ASP .Net\DoAnWeb_NET-master\Project_Web_NET\ModelsMVC\bin\Debug\ModelsMVC.pdb
+D:\ASP .Net\DoAnWeb_NET-master\Project_Web_NET\ModelsMVC\bin\Debug\EntityFramework.dll
+D:\ASP .Net\DoAnWeb_NET-master\Project_Web_NET\ModelsMVC\bin\Debug\EntityFramework.SqlServer.dll
+D:\ASP .Net\DoAnWeb_NET-master\Project_Web_NET\ModelsMVC\bin\Debug\EntityFramework.xml
+D:\ASP .Net\DoAnWeb_NET-master\Project_Web_NET\ModelsMVC\bin\Debug\EntityFramework.SqlServer.xml
+D:\ASP .Net\DoAnWeb_NET-master\Project_Web_NET\ModelsMVC\obj\Debug\ModelsMVC.csproj.CoreCompileInputs.cache
+D:\ASP .Net\DoAnWeb_NET-master\Project_Web_NET\ModelsMVC\obj\Debug\ModelsMVC.csproj.CopyComplete
+D:\ASP .Net\DoAnWeb_NET-master\Project_Web_NET\ModelsMVC\obj\Debug\ModelsMVC.dll
+D:\ASP .Net\DoAnWeb_NET-master\Project_Web_NET\ModelsMVC\obj\Debug\ModelsMVC.pdb
