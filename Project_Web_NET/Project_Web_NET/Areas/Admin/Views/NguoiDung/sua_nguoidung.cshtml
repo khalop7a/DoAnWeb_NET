@@ -1,0 +1,97 @@
+﻿@model ModelsMVC.Framework.NguoiDung
+
+@{ ViewBag.Title = "sua_nguoidung";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2 style="text-align: center; font-weight: bold; color: #000000">SỬA THÔNG TIN NGƯỜI DÙNG</h2>
+
+<!DOCTYPE html>
+
+<html>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.NguoiDung_ID)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NguoiDung_ID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NguoiDung_ID, new { htmlAttributes = new { @class = "form-control", @Disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.NguoiDung_ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Giới tính</label>
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        <select class="form-control" id="GioiTinh" name="GioiTinh" aria-invalid="false">
+                            <option value="false">Nữ</option>
+                            <option value="true">Nam</option>
+                        </select>
+                    </div>
+                    @*@{
+                List<SelectListItem> listItems = new List<SelectListItem>();
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Nam",
+                    Value = "1",
+
+                }); ;
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Nữ",
+                    Value = "0"
+
+                });
+
+            }
+            <label>
+                Giới tính
+            </label>
+            <br />
+            @Html.DropDownList("dsGender", listItems, null, htmlAttributes: new { @class = "form-control" })*@
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SDT, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Lưu" class="btn btn-default" />
+                    <a href="/Admin/NguoiDung/danhsach_nguoidung" class="btn btn-primary">Trở về</a>
+                </div>
+            </div>
+        </div>
+    }
+</body>
+</html>

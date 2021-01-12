@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ModelsMVC.Framework.ChuTro>
+
+@{
+    ViewBag.Title = "danhsach_chutro";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#dschutro").change(function (event) {
+            var chutroID = $(this).val();
+            if (chutroID == "")
+                location.reload();
+            $.ajax({
+                url: "@Url.Action("ds_chutro_ajax", "ChuTro")",
+                data: { id: chutroID },
+                type: "GET",
+                dataType: "html",
+                success: function (data) {
+                    $("#txtInfo").html("");
+                    $("#txtInfo").html(data);
+                    console.log(data);
+                }
+            });
+        });
+    });
+
+</script>
+<div>
+    <div class="dropdown" style="width: 400px">
+            @Html.DropDownList("dschutro", (List<SelectListItem>)ViewBag.TenNhaTro, "--- Tất cả nhà trọ ---", htmlAttributes: new { @class = "form-control" })
+        </div>
+    <div id="txtInfo">
+        @Html.Partial("ds_chutro_ajax", Model)
+    </div>
+</div>

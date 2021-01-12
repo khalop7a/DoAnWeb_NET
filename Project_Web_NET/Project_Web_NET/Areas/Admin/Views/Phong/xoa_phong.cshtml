@@ -1,0 +1,87 @@
+﻿@model ModelsMVC.Framework.Phong
+
+@{
+    ViewBag.Title = "xoa_phong";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align: center; font-weight: bold; color: #000000">XÓA THÔNG TIN PHÒNG</h2>
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã phòng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phong_ID)
+        </dd>
+        <dt>
+            Loại phòng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiPhong_ID)
+        </dd>
+
+        <dt>
+            Mã chủ trọ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChuTro_ID)
+        </dd>
+
+        <dt>
+            Diện tích
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienTich)
+        </dd>
+
+        <dt>
+            Giá
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gia)
+        </dd>
+
+        <dt>
+            Địa chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            Mô tả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <dt>
+            Số lượng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input name="submit" type="submit" value="Xóa" class="btn btn-primary" />
+            <input name="submit" type="submit" value="Trở về" class="btn btn-primary" />
+        </div>
+    }
+</div>

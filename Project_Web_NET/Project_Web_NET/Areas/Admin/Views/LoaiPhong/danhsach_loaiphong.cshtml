@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ModelsMVC.Framework.LoaiPhong>
+
+@{
+    ViewBag.Title = "danhsach_loaiphong";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#dsloaiphong").change(function (event) {
+            var loaiphongID = $(this).val();
+            if (loaiphongID == "")
+                location.reload();
+            $.ajax({
+                url: "@Url.Action("ds_loaiphong_ajax", "LoaiPhong")",
+                data: { id: loaiphongID },
+                type: "GET",
+                dataType: "html",
+                success: function (data) {
+                    $("#txtInfo").html("");
+                    $("#txtInfo").html(data);
+                    console.log(data);
+                }
+            });
+        });
+    });
+
+</script>
+<div>
+    <div class="dropdown" style="width: 400px">
+        @Html.DropDownList("dsloaiphong", (List<SelectListItem>)ViewBag.TenLoaiPhong, "--- Tất cả loại phòng ---", htmlAttributes: new { @class = "form-control" })
+    </div>
+    <div id="txtInfo">
+        @Html.Partial("ds_loaiphong_ajax", Model)
+    </div>
+</div>

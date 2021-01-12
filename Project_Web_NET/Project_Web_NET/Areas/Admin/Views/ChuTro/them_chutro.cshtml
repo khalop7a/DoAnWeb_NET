@@ -1,0 +1,114 @@
+﻿@model ModelsMVC.Framework.ChuTro
+
+@{
+    ViewBag.Title = "them_chutro";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align: center; font-weight: bold; color: #000000">THÊM CHỦ TRỌ</h2>
+
+<script>
+    $(document).ready(function () {
+        $("#confirmpass").keyup(function () {
+            var passId = $(this).val();
+            console.log(passId);
+            $.ajax({
+                url: "@Url.Action("GetPassValue", "ChuTro")",
+                data: { idPass: passId },
+                type: 'GET',
+                success: function (data) {
+                    //alert("Thêm thành công");
+                }
+            })
+        });
+    })
+</script>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <div class="form-horizontal">
+
+        <hr />
+
+        <div class="form-group">
+            <label>
+                Mã chủ trọ
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ChuTro_ID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ChuTro_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>
+                Email
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>
+                Số điện thoại
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>
+                Tên nhà trọ
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenNhaTro, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenNhaTro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>
+                Địa chỉ
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>
+                Mật khẩu
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control", @type = "password"  } })
+                @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label>
+                Xác nhận mật khẩu
+            </label>
+            <div class="col-md-10">
+                <input type="password" value="" id="confirmpass" class="form-control" />
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input name="submit" type="submit" value="Lưu" class="btn btn-primary" />
+                <input name="submit" type="submit" value="Trở về" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+@*@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    }*@

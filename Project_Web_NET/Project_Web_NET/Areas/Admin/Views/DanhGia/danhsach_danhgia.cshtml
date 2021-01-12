@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ModelsMVC.Framework.DanhGia>
+
+@{
+    ViewBag.Title = "danhsach_danhgia";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#dsdanhgia").change(function (event) {
+            var phongID = $(this).val();
+            if (phongID == "")
+                location.reload();
+            $.ajax({
+                url: "@Url.Action("ds_danhgia_ajax", "DanhGia")",
+                data: { id: phongID },
+                type: "GET",
+                dataType: "html",
+                success: function (data) {
+                    $("#txtInfo").html("");
+                    $("#txtInfo").html(data);
+                    console.log(data);
+                }
+            });
+        });
+    });
+
+</script>
+<div>
+    <div class="dropdown" style="width: 400px">
+        @Html.DropDownList("dsdanhgia", (List<SelectListItem>)ViewBag.DanhGia, "--- Chọn mã phòng ---", htmlAttributes: new { @class = "form-control" })
+    </div>
+    <div id="txtInfo">
+        @Html.Partial("ds_danhgia_ajax", Model)
+    </div>
+</div>

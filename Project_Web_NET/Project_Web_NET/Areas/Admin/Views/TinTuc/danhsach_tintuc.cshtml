@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ModelsMVC.Framework.TinTuc>
+
+@{
+    ViewBag.Title = "danhsach_tintuc";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#dstintuc").change(function (event) {
+            var tintucTitle = $(this).val();
+          
+            if (tintucTitle == "")
+                location.reload();
+            $.ajax({
+                url: "@Url.Action("ds_tintuc_ajax", "TinTuc")",
+                data: { tieude: tintucTitle },
+                type: "GET",
+                dataType: "html",
+                success: function (data) {
+                    $("#txtInfo").html("");
+                    $("#txtInfo").html(data);
+                    console.log(data);
+                }
+            });
+        });
+    });
+
+</script>
+<div>
+    <div class="dropdown" style="width: 400px">
+        @Html.DropDownList("dstintuc", (List<SelectListItem>)ViewBag.TinTuc, "--- Chọn tiêu đề ---", htmlAttributes: new { @class = "form-control" })
+    </div>
+    <div id="txtInfo">
+        @Html.Partial("ds_tintuc_ajax", Model)
+    </div>
+</div>

@@ -1,0 +1,63 @@
+﻿@model PagedList.IPagedList<ModelsMVC.Framework.DanhGia>
+@using PagedList.Mvc
+
+@{ Layout = null;
+                int i = 0; }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ds_danhgia_ajax</title>
+</head>
+<body>
+    <h2 style="text-align: center; font-weight: bold; color: #000000">DANH SÁCH ĐÁNH GIÁ</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                Mã người đánh giá
+            </th>
+            <th>
+                Mã phòng
+            </th>
+            <th>
+                Nội dung
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @{ i++;}
+        @i
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NguoiDung_ID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Phong_ID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NoiDung)
+    </td>
+    <td>
+        @Html.ActionLink("Xóa", "xoa_danhgia", new { id = item.DanhGia_ID })
+    </td>
+</tr>
+}
+
+    </table>
+    <br />
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    <div style="margin-left:10px;">
+        @Html.PagedListPager(Model, page => Url.Action("danhsach_danhgia", new { page }))
+    </div>
+</body>
+</html>

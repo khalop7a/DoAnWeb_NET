@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ModelsMVC.Framework.NguoiDung>
+
+@{
+    ViewBag.Title = "danhsach_nguoidung";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#dsnguoidung").change(function (event) {
+            var nguoidungID = $(this).val();
+            console.log(nguoidungID);
+            if (nguoidungID == "")
+                location.reload();
+            $.ajax({
+                url: "@Url.Action("ds_nguoidung_ajax", "NguoiDung")",
+                data: { id: nguoidungID },
+                type: "GET",
+                dataType: "html",
+                success: function (data) {
+                    $("#txtInfo").html("");
+                    $("#txtInfo").html(data);
+                    console.log(data);
+                }
+            });
+        });
+    });
+
+</script>
+<div>
+    <div class="dropdown" style="width: 400px">
+        @Html.DropDownList("dsnguoidung", (List<SelectListItem>)ViewBag.TenNguoiDung, "--- Tất cả người dùng ---", htmlAttributes: new { @class = "form-control" })
+    </div>
+    <div id="txtInfo">
+        @Html.Partial("ds_nguoidung_ajax", Model)
+    </div>
+</div>
