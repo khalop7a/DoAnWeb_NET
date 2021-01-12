@@ -1,0 +1,65 @@
+﻿@model ModelsMVC.Framework.NguoiDung
+
+@{
+    ViewBag.Title = "xoa_nguoidung";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align: center; font-weight: bold; color: #000000">XÓA THÔNG TIN NGƯỜI DÙNG</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+          Họ tên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+
+        <dt>
+            Giới tính
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioiTinh)
+        </dd>
+
+        <dt>
+           Số điện thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+
+        <dt>
+          Địa chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input name="submit" type="submit" value="Xóa" class="btn btn-primary" /> |
+    <a href="/Admin/NguoiDung/danhsach_nguoidung" class="btn btn-danger">Trở về</a>
+</div>
+    }
+</div>

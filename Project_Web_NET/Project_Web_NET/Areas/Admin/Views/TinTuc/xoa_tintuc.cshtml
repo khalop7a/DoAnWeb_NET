@@ -1,0 +1,63 @@
+﻿@model ModelsMVC.Framework.TinTuc
+
+@{
+    ViewBag.Title = "xoa_tintuc";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align: center; font-weight: bold; color: #000000">XÓA TIN TỨC</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Mã tin tức
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinTuc_ID)
+        </dd>
+        <dt>
+           Tiêu đề
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TieuDe)
+        </dd>
+
+        <dt>
+            Ngày đăng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDang)
+        </dd>
+
+        <dt>
+           Ngày chỉnh sửa
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayChinhSua)
+        </dd>
+
+        <dt>
+            Mã phòng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phong_ID)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input name="submit" type="submit" value="Xóa" class="btn btn-primary" />
+    <input name="submit" type="submit" value="Trở về" class="btn btn-primary" />
+</div>
+    }
+</div>

@@ -1,4 +1,4 @@
-namespace ModelsMVC.Framework
+﻿namespace ModelsMVC.Framework
 {
     using System;
     using System.Collections.Generic;
@@ -17,6 +17,7 @@ namespace ModelsMVC.Framework
         }
 
         [Key]
+
         public int Phong_ID { get; set; }
 
         public int? LoaiPhong_ID { get; set; }
@@ -24,18 +25,23 @@ namespace ModelsMVC.Framework
         [StringLength(100)]
         public string ChuTro_ID { get; set; }
 
-        [Required]
-        [StringLength(100)]
+        [Required(ErrorMessage = "Diện tích không được để trống!")]
+        [StringLength(100, ErrorMessage = "Diện tích không được quá 100 ký tự!")]
         public string DienTich { get; set; }
 
+        [Range(0, 10000000, ErrorMessage = "Giá không được nhỏ hơn 0 và lớn hơn 10000000!")]
         public double Gia { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Địa chỉ không được để trống!")]
         public string DiaChi { get; set; }
 
         public string MoTa { get; set; }
 
+        [Required(ErrorMessage = "Số lượng chưa hợp lệ!")]
+        [Range(0, 1000, ErrorMessage = "Số lượng không được nhỏ hơn 0 và lớn hơn 1000!")]
         public int? SoLuong { get; set; }
+
+        public string HinhAnh { get; set; }
 
         public virtual ChuTro ChuTro { get; set; }
 

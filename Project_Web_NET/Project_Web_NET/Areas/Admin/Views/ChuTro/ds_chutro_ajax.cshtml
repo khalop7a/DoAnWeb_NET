@@ -1,0 +1,86 @@
+﻿@model IEnumerable<ModelsMVC.Framework.ChuTro>
+
+@{
+    Layout = null;
+    int i = 0;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ds_chutro_ajax</title>
+</head>
+<body>
+    <h2 style="text-align: center; font-weight: bold; color: #000000">DANH SÁCH CHỦ TRỌ</h2>
+
+    <div class="col-lg-12">
+        <table class="table">
+            <tr>
+                <th>
+
+                    <i class="bi bi-plus-circle-dotted"></i>
+                    @Html.ActionLink("Thêm mới", "them_chutro")
+
+                </th>
+            </tr>
+        </table>
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                Mã chủ trọ
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Số điện thoại
+            </th>
+            <th>
+                Tên nhà trọ
+            </th>
+            <th>
+                Địa chỉ
+            </th>
+            <th>
+                Cập nhật
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @{ i++;}
+            @i
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChuTro_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SDT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenNhaTro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiaChi)
+        </td>
+        <td>
+            @Html.ActionLink("Chỉnh sửa", "sua_chutro", new { id = item.ChuTro_ID }) |
+            @Html.ActionLink("Xóa", "xoa_chutro", new { id = item.ChuTro_ID })
+        </td>
+    </tr>
+        }
+
+    </table>
+</body>
+</html>

@@ -1,0 +1,31 @@
+﻿@model ModelsMVC.Framework.LoaiPhong
+
+@{
+    ViewBag.Title = "xoa_loaiphong";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align: center; font-weight: bold; color: #000000">XÓA THÔNG TIN LOẠI PHÒNG</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên loại phòng: 
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TenLoai)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input name="submit" type="submit" value="Xóa" class="btn btn-primary" /> |
+    <input name="submit" type="submit" value="Trở về" class="btn btn-primary" />
+</div>
+    }
+</div>

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ModelsMVC.Framework.LoaiPhong>
+
+@{
+    Layout = null;
+    int i = 0;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ds_loaiphong_ajax</title>
+</head>
+<body>
+    <h2 style="text-align: center; font-weight: bold; color: #000000">DANH SÁCH LOẠI PHÒNG</h2>
+
+    <div class="col-lg-12">
+        <table class="table">
+            <tr>
+                <th>
+
+                    <i class="bi bi-plus-circle-dotted"></i>
+                    @Html.ActionLink("Thêm mới", "them_loaiphong")
+
+                </th>
+            </tr>
+        </table>
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                Mã loại phòng
+            </th>
+            <th>
+                Tên loại phòng
+            </th>
+            <th>
+                Cập nhật
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @{ i++;}
+            @i
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiPhong_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenLoai)
+        </td>
+        <td>
+            @Html.ActionLink("Chỉnh sửa", "sua_loaiphong", new { id = item.LoaiPhong_ID }) |
+            @Html.ActionLink("Xóa", "xoa_loaiphong", new { id = item.LoaiPhong_ID })
+        </td>
+    </tr>
+        }
+
+    </table>
+</body>
+</html>

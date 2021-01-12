@@ -1,0 +1,73 @@
+﻿@model PagedList.IPagedList<ModelsMVC.Framework.TinTuc>
+@using PagedList.Mvc
+@{ Layout = null;
+                int i = 0; }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ds_tintuc_ajax</title>
+</head>
+<body>
+    <h2 style="text-align: center; font-weight: bold; color: #000000">DANH SÁCH TIN TỨC</h2>
+    <table class="table">
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                Mã tin tức
+            </th>
+            <th>
+                Tiêu đề
+            </th>
+            <th>
+                Ngày đăng
+            </th>
+            <th>
+                Ngày chỉnh sửa
+            </th>
+            <th>
+                Mã phòng
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @{ i++;}
+                    @i
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TinTuc_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TieuDe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayDang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayChinhSua)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phong_ID)
+                </td>
+                <td>
+                    @Html.ActionLink("Xóa", "xoa_tintuc", new { id = item.TinTuc_ID })
+                </td>
+            </tr>
+}
+
+    </table>
+    <br />
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    <div style="margin-left:10px;">
+        @Html.PagedListPager(Model, page => Url.Action("danhsach_tintuc", new { page }))
+    </div>
+</body>
+</html>

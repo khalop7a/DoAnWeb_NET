@@ -1,4 +1,4 @@
-namespace ModelsMVC.Framework
+﻿namespace ModelsMVC.Framework
 {
     using System;
     using System.Collections.Generic;
@@ -10,6 +10,7 @@ namespace ModelsMVC.Framework
     public partial class DanhGia
     {
         [Key]
+
         public int DanhGia_ID { get; set; }
 
         [StringLength(100)]
@@ -17,6 +18,7 @@ namespace ModelsMVC.Framework
 
         public int? Phong_ID { get; set; }
 
+        [Required(ErrorMessage = "Nội dung chưa hợp lệ!")]
         public string NoiDung { get; set; }
 
         public virtual NguoiDung NguoiDung { get; set; }

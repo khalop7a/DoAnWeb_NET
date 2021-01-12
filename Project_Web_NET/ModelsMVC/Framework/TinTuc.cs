@@ -1,4 +1,4 @@
-namespace ModelsMVC.Framework
+﻿namespace ModelsMVC.Framework
 {
     using System;
     using System.Collections.Generic;
@@ -12,8 +12,8 @@ namespace ModelsMVC.Framework
         [Key]
         public int TinTuc_ID { get; set; }
 
-        [Required]
-        [StringLength(255)]
+        [Required(ErrorMessage = "Tiêu đề không được để trống!")]
+        [StringLength(255, ErrorMessage = "Tiêu đề không được quá 255 ký tự!")]
         public string TieuDe { get; set; }
 
         [Column(TypeName = "date")]

@@ -1,4 +1,4 @@
-namespace ModelsMVC.Framework
+﻿namespace ModelsMVC.Framework
 {
     using System;
     using System.Collections.Generic;
@@ -18,8 +18,8 @@ namespace ModelsMVC.Framework
         [Key]
         public int LoaiPhong_ID { get; set; }
 
-        [Required]
-        [StringLength(100)]
+        [Required(ErrorMessage = "Tên loại phòng không được để trống!")]
+        [StringLength(100, ErrorMessage = "Tên loại phòng không quá 100 ký tự!")]
         public string TenLoai { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

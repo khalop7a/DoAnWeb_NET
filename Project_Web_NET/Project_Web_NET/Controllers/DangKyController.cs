@@ -51,7 +51,6 @@ namespace Project_Web_NET.Controllers
         {
             if (ModelState.IsValid)
             {
-                chutro.IsValid = false;
                 chutro.MatKhau = GetMD5(chutro.MatKhau);
                 chutro.NhapLaiMatKhau = GetMD5(chutro.NhapLaiMatKhau);
                 db.ChuTroes.Add(chutro);
@@ -61,7 +60,7 @@ namespace Project_Web_NET.Controllers
             {
                 return Content("Error");
             }
-            return View("Success");
+            return View("DangKyNguoiDung");
         }
 
         public ActionResult DangKyNguoiDung()
@@ -83,7 +82,7 @@ namespace Project_Web_NET.Controllers
             {
                 return Content("Error");
             }
-            return View("Success");
+            return View("DangKyChuTro");
         }
         [HttpPost]
         public JsonResult TrungTaiKhoan_ChuTro(ChuTro chutro)
